@@ -181,4 +181,4 @@ cython_debug/
 .cursorindexingignore
 
 #igonre database filres
-postgres/data/*
+postgres/*
