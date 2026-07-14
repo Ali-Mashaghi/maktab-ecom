@@ -35,7 +35,7 @@ services:
       - DEBUG=True
     env_file:
       - ./envs/dev/django/.env
-    restart: always
+    # restart: always
     depends_on:
       db:
         condition: service_healthy
