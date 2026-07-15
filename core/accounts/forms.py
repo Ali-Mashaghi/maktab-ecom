@@ -5,5 +5,5 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
     def confirm_login_allowed(self , user):
         super(AuthenticationForm,self).confirm_login_allowed(user)
 
-        if not user.is_verfies:
+        if not user.is_verfied :
             raise ValidationError("user is not verified")

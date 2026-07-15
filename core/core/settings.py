@@ -15,7 +15,6 @@ DEBUG = config("DEBUG", cast =bool , default = True)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS" , default = "*" , cast = lambda v:[item.strip() for item in v.split(',') ])
 
-AUTH_USER_MODEL = "accounts.User"
 # Application definition
 
 INSTALLED_APPS = [
@@ -27,8 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'website',
-    'accounts'
-    
+    'accounts',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +130,7 @@ STATIC_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# Email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = config("EMAIL_HOST",default ="smtp4dev")
@@ -141,3 +140,8 @@ EMAIL_USE_SSL = config("EMAIL_USE_SSL",cast = bool ,default ="False")
 
 EMAIL_HOST_USER = config("EMAIL_HOST_USER",default ="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD",default ="")
+
+#accounting
+AUTH_USER_MODEL = "accounts.User"
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
