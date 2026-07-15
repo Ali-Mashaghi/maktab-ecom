@@ -22,7 +22,7 @@ class ProductModel(models.Model):
     slug = models.SlugField(allow_unicode= True)
     image = models.ImageField(default="/default/product-image-.png" , upload_to="product/img/")
     description = models.TextField()
-    stoke = models.PositiveIntegerField(default= 0 )
+    stock = models.PositiveIntegerField(default= 0 )
     price = models.DecimalField(default=0,max_digits=10,decimal_places=0)
     discount_percent = models.IntegerField(default= 0)
     status = models.IntegerField(choices=ProductStatusType.choices , default= ProductStatusType.draft.value)
@@ -30,7 +30,8 @@ class ProductModel(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
-
+    class meta:
+        ordering =["-created_date"]
 class ProductImageModel(models.Model):
     product = models.ForeignKey("accounts.User" , on_delete=models.CASCADE)
     file = models.ImageField( upload_to="product/extra-img/")
