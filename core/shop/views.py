@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import (TemplateView 
-, ListView , DetailViewi)
+, ListView , DetailView)
 
 from .models import ProductModel,ProductStatusType
 # Create your views here.

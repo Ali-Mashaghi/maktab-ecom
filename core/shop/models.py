@@ -13,7 +13,8 @@ class ProductCategory(models.Model):
 
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-
+    def __str__(self):
+        return self.title
 
 class ProductModel(models.Model):
     user = models.ForeignKey("accounts.User", on_delete= models.PROTECT ) #یوزر رو دیلیت کردم پروداکتاش بدون صاحب نمونه
@@ -21,7 +22,9 @@ class ProductModel(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode= True)
     image = models.ImageField(default="/default/product-image-.png" , upload_to="product/img/")
-    description = models.TextField()
+    description = models.TextField(null=True,blank=True)
+    brief_description = models.TextField(null=True,blank=True)
+
     stock = models.PositiveIntegerField(default= 0 )
     price = models.DecimalField(default=0,max_digits=10,decimal_places=0)
     discount_percent = models.IntegerField(default= 0)
@@ -32,6 +35,9 @@ class ProductModel(models.Model):
 
     class meta:
         ordering =["-created_date"]
+    def __str__(self):
+        return self.title
+
 class ProductImageModel(models.Model):
     product = models.ForeignKey("accounts.User" , on_delete=models.CASCADE)
     file = models.ImageField( upload_to="product/extra-img/")
